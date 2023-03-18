@@ -11,6 +11,7 @@ const ButtonDesplegable = ({ onEditClick, onDeleteClick }) => {
   };
 
   const handleEditClick = () => {
+    
     onEditClick();
     setIsOpen(false);
   };

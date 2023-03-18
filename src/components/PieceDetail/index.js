@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { getPieceById, getCollectionById, getCategoriesById, getPieceAssociatedUsers } from 'services/artService';
 import { getUserById } from 'services/userService';
+import { deleteArtById } from 'services/artService';
 import { useNavigate } from 'react-router-dom';
 import useUser from 'hooks/useUser';
 import ModalDetail from 'components/ModalDetail';
 import ButtonDesplegable from 'components/ButtonDesplegable';
+
 
 
 export default function PieceDetail({ idPiece }) {
@@ -127,7 +129,15 @@ export default function PieceDetail({ idPiece }) {
       };
     
       const handleDeleteClick = () => {
-        console.log('Borrar');
+           
+        deleteArtById(idPiece)
+                .then((res) => {
+                    //setUploadMsg(res.data);
+                    if (res.ok) {
+                        console.log(res.data);
+                    }
+                })
+          
       };
 
     return (

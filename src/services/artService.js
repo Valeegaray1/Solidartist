@@ -10,6 +10,17 @@ function getAllCategories() {
         .then(res => (res.data))
 }
 
+function deleteArtById(idPiece) {
+    return fetch(`${API_URL}/art/piece/${idPiece}`, {
+        method: 'DELETE'
+      })
+        .then(res => {
+            if (!res.ok) throw new Error(res.statusText);
+            return res.json()
+        })
+        .then(res => (res.data))
+}
+
 function newArt(body) {
     return fetch(`${API_URL}/art/new`, {
         method: 'POST',
@@ -102,5 +113,6 @@ export {
     getCollectionById,
     getCategoriesById,
     getPieceAssociatedUsers,
-    editOwner
+    editOwner,
+    deleteArtById
 }
